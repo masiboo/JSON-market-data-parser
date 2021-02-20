@@ -3,10 +3,11 @@ package net.sympower.cityzen.apx;
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonToken;
-import org.junit.Assert;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 public class ApxDataLoaderTest {
 
@@ -21,8 +22,13 @@ public class ApxDataLoaderTest {
 
         // Assert
         assertNotNull(response);
-        assertFalse(response.getQuote().isEmpty());
-        Assert.assertTrue(response.getQuote().size() > 0);
+
+        ObjectMapper mapper = new ObjectMapper();
+
+        // pretty print
+        String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(response);
+        System.out.println(json);
+
     }
 
     @Test

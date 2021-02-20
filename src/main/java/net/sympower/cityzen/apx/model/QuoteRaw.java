@@ -2,17 +2,15 @@ package net.sympower.cityzen.apx.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
 
-@NoArgsConstructor
 @Setter
 @Getter
-public class Wrapper {
-
-    @JsonProperty("quote")
-    List<QuoteRaw> quotes;
-
+public class QuoteRaw {
+    @JsonProperty("date_applied")
+    private Long dateApplied;
+    @JsonProperty("values")
+    public List<QuoteValueRaw> quoteValues;
 }
